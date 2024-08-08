@@ -1,0 +1,5 @@
+adriatico:Adriatico
+alberta:Alberta, Albertina
+aberta:Alberta
+boiada:boiaras
+boiada:boiaras, boiardes, boiarei, boiarem
