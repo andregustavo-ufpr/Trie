@@ -52,7 +52,7 @@ void insert(TrieNode* root, const char* str) {
     node->isEndOfWord = 1;
 
     //Armazena a palavra original
-    node->originalWord = strdup(aux);
+    node->originalWord = aux;
 }
 
 //Função para construir a TRIE a partir de um arquivo
@@ -109,4 +109,22 @@ void searchTrieRecursive(TrieNode* node, const char* query, int maxDistance, cha
 //Função para buscar palavras na TRIE
 void searchTrie(TrieNode* root, const char* query, int maxDistance, char* currentWord, int length, char results[][100], char originalResults[][100], int* resultCount) {
     searchTrieRecursive(root, query, maxDistance, currentWord, length, results, originalResults, resultCount);
+}
+
+//Função para liberar a memória alocada pela Trie
+void freeTrie(TrieNode* node){
+    if(!node)
+        return;
+
+    //Libera a palavra original armazenada
+    if(node->originalWord != NULL)
+        free(node->originalWord);
+
+    //Libera a memória de todos os filhos recursivamente
+    for(int i=0; i < 52; i++){
+        if(node->children[i] != NULL)
+            freeTrie(node->children[i]);
+    }
+
+    free(node);
 }

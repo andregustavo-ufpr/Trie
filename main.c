@@ -21,9 +21,12 @@ void processQueries(TrieNode* root, FILE* file) {
         searchTrie(root, query, maxDistance, currentWord, 0, results, originalResults, &resultCount);
 
         printf("%s:", query);
-        for (int i = 0; i < resultCount; i++) {
-            printf("%s%s", originalResults[i], (i == resultCount - 1) ? "\n" : ", ");
-        }
+        if(resultCount >0){
+            for (int i = 0; i < resultCount; i++) {
+                printf("%s%s", originalResults[i], (i == resultCount - 1) ? "\n" : ", ");
+            }
+        } else
+            printf("\n"); //Adiciona uma nova linha caso nenhum resultado tenha sido encontrado
     }
 }
 
@@ -42,5 +45,8 @@ int main() {
     // Processar as consultas
     processQueries(root, stdin);
 
+    //Libera toda a memória alocada
+    freeTrie(root);
+    
     return 0;
 }

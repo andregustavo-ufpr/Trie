@@ -30,4 +30,6 @@ void searchTrieRecursive(TrieNode* node, const char* query, int maxDistance, cha
 //Função para buscar palavras na TRIE
 void searchTrie(TrieNode* root, const char* query, int maxDistance, char* currentWord, int length, char results[][100], char originalResults[][100], int* resultCount);
 
+void freeTrie(TrieNode* node);
+
 #endif
