@@ -4,10 +4,9 @@
 #include "tree.h"
 
 //Função para processar as consultas
-void processQueries(TrieNode* root, const char* filename) {
-    FILE *file = fopen(filename, "r");
+void processQueries(TrieNode* root, FILE* file) {
     if (!file) {
-        printf("Não foi possível abrir o arquivo %s\n", filename);
+        printf("Não foi possível abrir o arquivo");
         return;
     }
 
@@ -26,7 +25,6 @@ void processQueries(TrieNode* root, const char* filename) {
             printf("%s%s", originalResults[i], (i == resultCount - 1) ? "\n" : ", ");
         }
     }
-    fclose(file);
 }
 
 int main() {
@@ -37,10 +35,12 @@ int main() {
     TrieNode* root = getNode();
 
     //Construir a TRIE a partir do arquivo de palavras
-    buildTrieFromFile(root, stdin);
+    FILE *dictionary = fopen("palavras.txt", "r");
+    buildTrieFromFile(root, dictionary);    
+    fclose(dictionary);
 
     // Processar as consultas
-    processQueries(root, "consultas.txt");
+    processQueries(root, stdin);
 
     return 0;
 }
