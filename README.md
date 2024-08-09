@@ -24,4 +24,4 @@ make
 
 # Autores
 
-Trabalho de autoria de: André Gustavo Silveira e Henrico
+Trabalho de autoria de: André Gustavo Silveira e Henrico José Cornélio
